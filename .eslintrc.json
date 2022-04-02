@@ -34,7 +34,10 @@
         "newlinesBetween": "always",
         "groups": [
           ["/^react$/", "module"],
-          ["/^~/components/"],
+          "/^~/assets/",
+          "/^~/common/",
+          "/^~/pages/",
+          "/^~/components/",
           ["parent", "sibling"],
           "index"
         ],

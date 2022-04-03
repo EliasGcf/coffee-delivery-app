@@ -4,12 +4,12 @@ import AvatarImg from '~/assets/avatar.png';
 
 export function Avatar() {
   return (
-    <View style={avatarStyle.container}>
-      <Image style={avatarStyle.avatar} source={AvatarImg} />
+    <View style={style.container}>
+      <Image style={style.avatar} source={AvatarImg} />
     </View>
   );
 }
-const avatarStyle = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     height: 50,
     width: 50,

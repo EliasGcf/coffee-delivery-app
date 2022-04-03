@@ -24,6 +24,7 @@
     "react/react-in-jsx-scope": "off",
     "react/style-prop-object": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/require-default-props": "off",
     "no-use-before-define": "off",
     "unused-imports/no-unused-imports": "error",
     "import/prefer-default-export": "off",

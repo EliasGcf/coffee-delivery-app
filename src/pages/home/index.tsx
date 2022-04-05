@@ -2,7 +2,8 @@ import { FlatList, StyleSheet, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 
-import { Card } from '~/components/card';
+import { HomeCard } from '~/pages/home/card';
+
 import { CategoryList } from '~/components/category-list';
 import { Header } from '~/components/header';
 import { Input } from '~/components/input';
@@ -35,7 +36,7 @@ export function Home() {
           keyExtractor={(item) => item.id}
           contentContainerStyle={coffeeListStyle.contentContainer}
           renderItem={({ item, index }) => (
-            <Card
+            <HomeCard
               title={item.title}
               amount={item.amount}
               style={{

@@ -3,13 +3,13 @@ import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-nativ
 
 import CoffeeImage from '~/assets/coffee.png';
 
-type CardProps = {
+type HomeCardProps = {
   title: string;
   amount: string;
   style?: StyleProp<ViewStyle>;
 };
 
-export function Card({ title, amount, style }: CardProps) {
+export function HomeCard({ title, amount, style }: HomeCardProps) {
   return (
     <View style={[styles.container, style]}>
       <View>

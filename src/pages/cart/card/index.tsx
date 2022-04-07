@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { IconButton } from '~/components/icon-button';
-import { Row } from '~/components/utils/row';
+import { Row } from '~/components/row';
 
 type CartCardProps = {
   title: string;

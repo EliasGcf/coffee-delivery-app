@@ -9,8 +9,8 @@ import { CartCard } from '~/pages/cart/card';
 
 import { ButtonText } from '~/components/button-text';
 import { Divider } from '~/components/divider';
+import { Row } from '~/components/row';
 import { Ticket } from '~/components/ticket';
-import { Row } from '~/components/utils/row';
 
 export function Cart() {
   return (

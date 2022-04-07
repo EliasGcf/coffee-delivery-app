@@ -6,7 +6,7 @@ import CoffeeImg from '~/assets/coffee-description.png';
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 
 import { ButtonText } from '~/components/button-text';
-import { Row } from '~/components/utils/row';
+import { Row } from '~/components/row';
 
 export function Description() {
   return (

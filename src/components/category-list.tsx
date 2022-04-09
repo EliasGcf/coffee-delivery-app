@@ -1,12 +1,22 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 type CategoryListProps = {
   height: number;
 };
 
+const categoryData = [
+  { id: 1, name: 'Cappuccino' },
+  { id: 2, name: 'Latte' },
+  { id: 3, name: 'Americano' },
+  { id: 4, name: 'Espresso' },
+  { id: 5, name: 'Flat White' },
+];
+
 export function CategoryList({ height }: CategoryListProps) {
   const [sizes, setCategoriesBarSizes] = useState({ height: 0, width: 0 });
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState(1);
 
   return (
     <View
@@ -31,13 +41,25 @@ export function CategoryList({ height }: CategoryListProps) {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={[{ alignItems: 'center' }, styles.scrollView]}
+        contentContainerStyle={styles.scrollViewContentContainer}
       >
-        <Text style={styles.text}>Cappuccino</Text>
-        <Text style={styles.text}>Latte</Text>
-        <Text style={styles.text}>Americano</Text>
-        <Text style={styles.text}>Espresso</Text>
-        <Text style={styles.text}>Flat White</Text>
+        {categoryData.map((category) => (
+          <TouchableOpacity
+            key={category.id}
+            activeOpacity={0.7}
+            style={styles.button}
+            onPress={() => setSelectedCategoryId(category.id)}
+          >
+            <Text
+              style={[
+                styles.text,
+                selectedCategoryId === category.id ? styles.selectedText : undefined,
+              ]}
+            >
+              {category.name}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
     </View>
   );
@@ -54,8 +76,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
 
-  scrollView: {
+  scrollViewContentContainer: {
     paddingHorizontal: 34,
+  },
+
+  button: {
+    marginRight: 40,
+    justifyContent: 'center',
   },
 
   text: {
@@ -63,6 +90,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Rosarivo_400Regular',
     transform: [{ rotate: '180deg' }],
     color: '#938379',
-    marginRight: 40,
+  },
+
+  selectedText: {
+    color: '#EFE3C8',
+    transform: [{ rotate: '180deg' }, { scale: 1.15 }],
   },
 });

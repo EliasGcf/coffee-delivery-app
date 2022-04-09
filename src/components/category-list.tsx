@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Dimensions, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 export function CategoryList() {
   const [sizes, setCategoriesBarSizes] = useState({ height: 0, width: 0 });
@@ -23,11 +23,18 @@ export function CategoryList() {
         });
       }}
     >
-      <Text style={styles.text}>Cappuccino</Text>
-      <Text style={styles.text}>Latte</Text>
-      <Text style={styles.text}>Americano</Text>
-      <Text style={styles.text}>Espresso</Text>
-      <Text style={styles.text}>Flat White</Text>
+      <ScrollView
+        horizontal
+        style={styles.scrollView}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ alignItems: 'center' }}
+      >
+        <Text style={styles.text}>Cappuccino</Text>
+        <Text style={styles.text}>Latte</Text>
+        <Text style={styles.text}>Americano</Text>
+        <Text style={styles.text}>Espresso</Text>
+        <Text style={styles.text}>Flat White</Text>
+      </ScrollView>
     </View>
   );
 }
@@ -39,11 +46,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
     left: 0,
-    paddingHorizontal: 34,
     backgroundColor: '#38232A',
     borderTopStartRadius: 10,
-    alignItems: 'center',
     flexDirection: 'row',
+  },
+
+  scrollView: {
+    paddingHorizontal: 34,
   },
 
   text: {

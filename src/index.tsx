@@ -8,7 +8,7 @@ import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 
-import { Cart } from '~/pages/cart';
+import { Home } from '~/pages/home';
 
 export function App() {
   const [isFontsLoaded] = useFonts({
@@ -26,7 +26,7 @@ export function App() {
   return (
     <>
       <StatusBar style="light" />
-      <Cart />
+      <Home />
     </>
   );
 }

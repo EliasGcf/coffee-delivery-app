@@ -37,8 +37,9 @@
           ["/^react$/", "module"],
           "/^~/assets/",
           "/^~/common/",
-          "/^~/pages/",
           "/^~/components/",
+          "/^~/pages/",
+          "/^~/services/",
           ["parent", "sibling"],
           "index"
         ],

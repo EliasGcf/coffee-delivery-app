@@ -1,19 +1,18 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
 import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
-import CoffeeImage from '~/assets/coffee.png';
-
 type HomeCardProps = {
   title: string;
   amount: string;
+  image_url: string;
   style?: StyleProp<ViewStyle>;
 };
 
-export function HomeCard({ title, amount, style }: HomeCardProps) {
+export function HomeCard({ title, amount, image_url, style }: HomeCardProps) {
   return (
     <View style={[styles.container, style]}>
       <View>
-        <Image style={styles.image} source={CoffeeImage} />
+        <Image style={styles.image} source={{ uri: image_url }} />
         <Text style={styles.coffeeName}>{title}</Text>
 
         <View style={styles.starBadgeContainer}>

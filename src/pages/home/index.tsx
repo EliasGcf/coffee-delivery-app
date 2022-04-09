@@ -1,24 +1,24 @@
+import { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
-
-import { HomeCard } from '~/pages/home/card';
 
 import { CategoryList } from '~/components/category-list';
 import { Header } from '~/components/header';
 import { Input } from '~/components/input';
 
-const coffeeData = [
-  { id: '1', title: 'Cinnamon & Cocoa', amount: '₹99' },
-  { id: '2', title: 'Drizzled with Caramel', amount: '₹199' },
-  { id: '3', title: 'Bursting Blueberry', amount: '₹249' },
-  { id: '4', title: 'Dalgona Whipped Macha', amount: '₹299' },
-  { id: '5', title: 'Drizzled with Caramel', amount: '₹199' },
-  { id: '6', title: 'Bursting Blueberry', amount: '₹249' },
-  { id: '7', title: 'Cinnamon & Cocoa', amount: '₹99' },
-];
+import { HomeCard } from '~/pages/home/card';
+
+import { api } from '~/services/api';
+import { Api } from '~/services/api.types';
 
 export function Home() {
+  const [coffees, setCoffees] = useState<Api.Coffee[]>([]);
+
+  useEffect(() => {
+    api.get('coffees').then((response) => setCoffees(response.data));
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -31,14 +31,15 @@ export function Home() {
 
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={coffeeData}
+          data={coffees}
           numColumns={2}
           keyExtractor={(item) => item.id}
           contentContainerStyle={coffeeListStyle.contentContainer}
           renderItem={({ item, index }) => (
             <HomeCard
-              title={item.title}
-              amount={item.amount}
+              title={item.name}
+              amount={item.price}
+              image_url={item.image_url}
               style={{
                 marginBottom: 16,
                 marginRight: index % 2 === 0 ? 16 : 0,

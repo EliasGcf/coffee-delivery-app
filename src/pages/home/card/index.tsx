@@ -1,5 +1,13 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
-import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import {
+  Image,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  ViewStyle,
+} from 'react-native';
 
 type HomeCardProps = {
   title: string;
@@ -27,9 +35,9 @@ export function HomeCard({ title, amount, image_url, stars, style }: HomeCardPro
           <Text style={styles.amount}>{amount}</Text>
         </View>
 
-        <View style={styles.amountPlusContainer}>
+        <TouchableOpacity activeOpacity={0.7} style={styles.amountPlusContainer}>
           <Feather name="plus" size={24} color="black" />
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );

@@ -39,6 +39,7 @@ export function Home() {
             <HomeCard
               title={item.name}
               amount={item.price}
+              stars={item.stars}
               image_url={item.image_url}
               style={{
                 marginBottom: 16,

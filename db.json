@@ -5,6 +5,7 @@
       "name": "Espresso",
       "description": "Also known as a short black, an espresso is a single shot of coffee. No extra hot water is added, resulting in an intense and flavoursome drink.\n\nAn espresso shot, which forms the basis of many of the other drinks to follow, is produced by forcing hot water through finely ground coffee beans.",
       "price": "$2.00",
+      "stars": 4.4,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461044/coffee%20delivery%20app/jeremy-yap-jn-HaGWe4yw-unsplash_hqc04t.jpg"
     },
     {
@@ -12,6 +13,7 @@
       "name": "Doppio",
       "description": "A Doppio is a double shot of espresso with no added hot water or milk. This results in 60 ml of coffee. Doppio means 'double' in Italian.",
       "price": "$4.00",
+      "stars": 2.2,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461307/coffee%20delivery%20app/double-espresso_sskxca.jpg"
     },
     {
@@ -19,6 +21,7 @@
       "name": "Ristretto",
       "description": "A ristretto, which means 'restricted' in Italian, is a shot of espresso coffee but extracted with half the amount of water. This results in a delicious, concentrated shot. A ristretto is typically enjoyed straight but it can also be combined with milk.",
       "price": "$2.50",
+      "stars": 2.3,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461433/coffee%20delivery%20app/ristretto_blfnev.jpg"
     },
     {
@@ -26,6 +29,7 @@
       "name": "Long Black",
       "description": "A long black is made by pouring a double-shot of espresso over hot water. Unlike an Americano which is made by adding hot water to the espresso shot, a long black retains the crema and is less voluminous, therefore more strongly flavoured.",
       "price": "$3.80",
+      "stars": 2.6,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461492/coffee%20delivery%20app/ede9652f559e4948808c058843c97574_cdupde.jpg"
     },
     {
@@ -33,6 +37,7 @@
       "name": "Short Macchiato",
       "description": "A short macchiato is served in a small glass consisting of a single espresso shot then filled with creamy steamed milk and finished with a small layer of foam.",
       "price": "$4.00",
+      "stars": 3.2,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461519/coffee%20delivery%20app/Long-Macchiato-2-scaled_l24nal.jpg"
     },
     {
@@ -40,6 +45,7 @@
       "name": "Long Macchiato",
       "description": "A long macchiato is similar to a short macchiato, except that it contains a double shot (around 60ml) of coffee.",
       "price": "$6.00",
+      "stars": 1.9,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461571/coffee%20delivery%20app/long-short-macchiato_jkrbor.jpg"
     },
     {
@@ -47,6 +53,7 @@
       "name": "Mezzo Mezzo (Piccolo)",
       "description": "A mezzo mezzo (also known as a piccolo) is a single espresso shot in a small latte glass, which is then filled with steamed milk.",
       "price": "$7.00",
+      "stars": 4.3,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461615/coffee%20delivery%20app/0517a8e29d3d7a3ff4bdfde7e090ab6f--italian-pronunciation-perth_1024x1024_hnz7kc.jpg"
     },
     {
@@ -54,6 +61,7 @@
       "name": "Cappuccino",
       "description": "Recognised by the froth on top, a cappuccino is one part espresso shot, one part textured milk and one part froth on top with a dusting of chocolate to finish.\n\nAt Merlo locations, a cappuccino in a 8oz cup contains one shot of espresso, in a 12oz cup 1.5 shots and in a 16oz cup two shots. This is the same for a latte, flat white and mocha.",
       "price": "$6.00",
+      "stars": 3.0,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461669/coffee%20delivery%20app/cappuccino-2029-e80b7c6d318c7862df2c4c8623a11f99_1x_uycqyi.jpg"
     },
     {
@@ -61,6 +69,7 @@
       "name": "Latte",
       "description": "A latte is a coffee espresso shot filled with steamed milk and with a layer of foamed milk crema.",
       "price": "$6.00",
+      "stars": 3.4,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461732/coffee%20delivery%20app/how-to-make-a-latte-at-home_vaaqn9.jpg"
     },
     {
@@ -68,6 +77,7 @@
       "name": "Flat White",
       "description": "A flat white is very similar to a latte, with un-textured milk (no air incorporated when being steamed) resulting in espresso and steamed milk with little or no froth.",
       "price": "$3.50",
+      "stars": 1.8,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649462667/coffee%20delivery%20app/fedee22e49724cd09fbcc7ee2e567377_zij2ww.jpg"
     },
     {
@@ -75,6 +85,7 @@
       "name": "Mocha",
       "description": "A latte with the added sweetness of chocolate. A mocha can be prepared by adding chocolate to the espresso shot before adding the textured milk, or adding the chocolate to the cold milk before frothing.",
       "price": "$7.00",
+      "stars": 3.1,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461766/coffee%20delivery%20app/mocha-latte-recipe_lzkhqx.jpg"
     },
     {
@@ -82,6 +93,7 @@
       "name": "Affogato",
       "description": "Combine a scoop of vanilla ice cream and a double shot of hot espresso and you have an affogato. Great for a post-lunch or dinner treat.",
       "price": "$6.25",
+      "stars": 3.9,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461806/coffee%20delivery%20app/k_2FPhoto_2FRecipes_2F2020-07-How-to-make-affogato-at-home_2FKitchn_HowTo_Affogato_0281_pyghsl.jpg"
     },
     {
@@ -89,6 +101,7 @@
       "name": "Batch Brew",
       "description": "A batch brew is a coffee made in an automated pour over machine, like a Moccamaster. These machines use a filter and brew much larger quantities of coffee than devices like the AeroPress, V60 or Chemex.",
       "price": "$4.00",
+      "stars": 2.4,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461864/coffee%20delivery%20app/moccamaster_aus_19_3_2018_22_57_4_738-1024x1024_c5uww5.jpg"
     },
     {
@@ -96,6 +109,7 @@
       "name": "Cold Drip",
       "description": "Cold drip coffee is similar to coffee brewed in a pour-over device, except that the process uses cold water and takes much longer. Our Merlo stores use a Yama cold drip tower to make cold drip coffee.",
       "price": "$3.80",
+      "stars": 3.25,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649462006/coffee%20delivery%20app/Delter-slow-drip_oaub67.jpg"
     },
     {
@@ -103,6 +117,7 @@
       "name": "Cold Brew",
       "description": "Our Cold Brew coffee can is produced by submerging our premium Zambia coffee beans in cold water for an extended period of time. This results in a smooth and refreshing brew with 180mg of caffeine - similar to a double-shot espresso.",
       "price": "$3.80",
+      "stars": 2.7,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461936/coffee%20delivery%20app/cold-brew-tower-black_2_1024x_bgfzqf.jpg"
     }
   ]

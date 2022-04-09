@@ -5,6 +5,7 @@ export declare namespace Api {
     id: string;
     name: string;
     description: string;
+    stars: number;
     price: string;
     image_url: string;
   };

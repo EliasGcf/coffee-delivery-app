@@ -5,10 +5,11 @@ type HomeCardProps = {
   title: string;
   amount: string;
   image_url: string;
+  stars: number;
   style?: StyleProp<ViewStyle>;
 };
 
-export function HomeCard({ title, amount, image_url, style }: HomeCardProps) {
+export function HomeCard({ title, amount, image_url, stars, style }: HomeCardProps) {
   return (
     <View style={[styles.container, style]}>
       <View>
@@ -17,7 +18,7 @@ export function HomeCard({ title, amount, image_url, style }: HomeCardProps) {
 
         <View style={styles.starBadgeContainer}>
           <FontAwesome name="star" size={10} color="#D3A601" />
-          <Text style={styles.starText}>4.5</Text>
+          <Text style={styles.starText}>{stars}</Text>
         </View>
       </View>
 

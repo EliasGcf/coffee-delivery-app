@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
@@ -14,6 +14,15 @@ import { Api } from '~/services/api.types';
 
 export function Home() {
   const [coffees, setCoffees] = useState<Api.Coffee[]>([]);
+  const [searchValue, setSearchValue] = useState('');
+
+  const [mainContainerHeight, setMainContainerHeight] = useState(0);
+
+  const filteredCoffees = useMemo<Api.Coffee[]>(() => {
+    return coffees.filter((coffee) =>
+      coffee.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [coffees, searchValue]);
 
   useEffect(() => {
     api.get('coffees').then((response) => setCoffees(response.data));
@@ -23,15 +32,18 @@ export function Home() {
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Header />
-        <Input />
+        <Input autoCorrect={false} value={searchValue} onChangeText={setSearchValue} />
       </View>
 
-      <View style={styles.main}>
-        <CategoryList />
+      <View
+        style={styles.main}
+        onLayout={(event) => setMainContainerHeight(event.nativeEvent.layout.height)}
+      >
+        <CategoryList height={mainContainerHeight} />
 
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={coffees}
+          data={filteredCoffees}
           numColumns={2}
           keyExtractor={(item) => item.id}
           contentContainerStyle={coffeeListStyle.contentContainer}

@@ -1,7 +1,11 @@
 import { useState } from 'react';
-import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-export function CategoryList() {
+type CategoryListProps = {
+  height: number;
+};
+
+export function CategoryList({ height }: CategoryListProps) {
   const [sizes, setCategoriesBarSizes] = useState({ height: 0, width: 0 });
 
   return (
@@ -9,6 +13,7 @@ export function CategoryList() {
       style={[
         styles.container,
         {
+          width: height,
           transform: [
             { rotate: '90deg' },
             { translateY: sizes.width / 2 - sizes.height / 2 },
@@ -25,9 +30,8 @@ export function CategoryList() {
     >
       <ScrollView
         horizontal
-        style={styles.scrollView}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ alignItems: 'center' }}
+        contentContainerStyle={[{ alignItems: 'center' }, styles.scrollView]}
       >
         <Text style={styles.text}>Cappuccino</Text>
         <Text style={styles.text}>Latte</Text>
@@ -42,7 +46,6 @@ export function CategoryList() {
 const styles = StyleSheet.create({
   container: {
     height: 38,
-    width: Dimensions.get('window').height,
     position: 'absolute',
     zIndex: 1,
     left: 0,

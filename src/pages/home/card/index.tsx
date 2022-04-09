@@ -13,7 +13,7 @@ export function HomeCard({ title, amount, image_url, stars, style }: HomeCardPro
   return (
     <View style={[styles.container, style]}>
       <View>
-        <Image style={styles.image} source={{ uri: image_url }} />
+        <Image style={styles.image} source={{ uri: image_url }} resizeMode="cover" />
         <Text style={styles.coffeeName}>{title}</Text>
 
         <View style={styles.starBadgeContainer}>
@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     height: 111,
 
     borderRadius: 15,
+    borderTopLeftRadius: 18,
   },
 
   coffeeName: {

@@ -1,7 +1,9 @@
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet, TextInput, View } from 'react-native';
+import { StyleSheet, TextInput, View, TextInputProps } from 'react-native';
 
-export function Input() {
+type InputPros = TextInputProps;
+
+export function Input({ ...rest }: InputPros) {
   return (
     <View style={style.container}>
       <FontAwesome name="search" size={24} color="#877C74" />
@@ -9,6 +11,7 @@ export function Input() {
         style={style.textInput}
         placeholder="Browse your favorite coffee..."
         placeholderTextColor="#877C74"
+        {...rest}
       />
     </View>
   );

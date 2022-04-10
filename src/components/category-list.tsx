@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { Api } from '~/services/api.types';
+
 type CategoryListProps = {
   height: number;
+  categories: Api.Category[];
+  selectedCategory?: Api.Category | null;
+  onChange: (category: Api.Category) => void;
 };
 
-const categoryData = [
-  { id: 1, name: 'Cappuccino' },
-  { id: 2, name: 'Latte' },
-  { id: 3, name: 'Americano' },
-  { id: 4, name: 'Espresso' },
-  { id: 5, name: 'Flat White' },
-];
-
-export function CategoryList({ height }: CategoryListProps) {
+export function CategoryList({
+  height,
+  categories,
+  selectedCategory,
+  onChange,
+}: CategoryListProps) {
   const [sizes, setCategoriesBarSizes] = useState({ height: 0, width: 0 });
-
-  const [selectedCategoryId, setSelectedCategoryId] = useState(1);
 
   return (
     <View
@@ -43,17 +43,17 @@ export function CategoryList({ height }: CategoryListProps) {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.scrollViewContentContainer}
       >
-        {categoryData.map((category) => (
+        {categories.map((category) => (
           <TouchableOpacity
             key={category.id}
             activeOpacity={0.7}
             style={styles.button}
-            onPress={() => setSelectedCategoryId(category.id)}
+            onPress={() => onChange(category)}
           >
             <Text
               style={[
                 styles.text,
-                selectedCategoryId === category.id ? styles.selectedText : undefined,
+                selectedCategory?.id === category.id ? styles.selectedText : undefined,
               ]}
             >
               {category.name}

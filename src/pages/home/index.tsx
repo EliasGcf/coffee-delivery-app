@@ -1,5 +1,12 @@
 import { useMemo, useEffect, useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 
@@ -12,11 +19,33 @@ import { HomeCard } from '~/pages/home/card';
 import { api } from '~/services/api';
 import { Api } from '~/services/api.types';
 
+function EmptyList({ isLoading }: { isLoading: boolean }) {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center' }}>
+      {isLoading ? (
+        <ActivityIndicator
+          size={Platform.OS === 'android' ? 'large' : 'small'}
+          color="#EFE3C8"
+        />
+      ) : (
+        <Text
+          style={{ fontSize: 18, fontFamily: 'Rosarivo_400Regular', color: '#EFE3C8' }}
+        >
+          Found no coffees...
+        </Text>
+      )}
+    </View>
+  );
+}
+
 export function Home() {
   const [coffees, setCoffees] = useState<Api.Coffee[]>([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [categories, setCategories] = useState<Api.Category[]>([]);
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchValue, setSearchValue] = useState('');
   const [mainContainerHeight, setMainContainerHeight] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState<Api.Category | null>(null);
 
   const filteredCoffees = useMemo<Api.Coffee[]>(() => {
     return coffees.filter((coffee) =>
@@ -25,8 +54,30 @@ export function Home() {
   }, [coffees, searchValue]);
 
   useEffect(() => {
-    api.get('coffees').then((response) => setCoffees(response.data));
+    async function loadData() {
+      const categoriesResponse = await api.get('categories');
+
+      const firstCategory = categoriesResponse.data[0];
+
+      setCategories(categoriesResponse.data);
+      setSelectedCategory(firstCategory);
+    }
+
+    loadData();
   }, []);
+
+  useEffect(() => {
+    if (!selectedCategory) return;
+
+    setIsLoading(true);
+    setCoffees([]);
+    setSearchValue('');
+
+    api
+      .get(`coffees?categoryId=${selectedCategory.id}`)
+      .then((response) => setCoffees(response.data))
+      .finally(() => setIsLoading(false));
+  }, [selectedCategory]);
 
   return (
     <View style={styles.container}>
@@ -39,7 +90,12 @@ export function Home() {
         style={styles.main}
         onLayout={(event) => setMainContainerHeight(event.nativeEvent.layout.height)}
       >
-        <CategoryList height={mainContainerHeight} />
+        <CategoryList
+          categories={categories}
+          height={mainContainerHeight}
+          onChange={(data) => setSelectedCategory(data)}
+          selectedCategory={selectedCategory}
+        />
 
         <FlatList
           showsVerticalScrollIndicator={false}
@@ -47,6 +103,7 @@ export function Home() {
           numColumns={2}
           keyExtractor={(item) => item.id}
           contentContainerStyle={coffeeListStyle.contentContainer}
+          ListEmptyComponent={<EmptyList isLoading={isLoading} />}
           renderItem={({ item, index }) => (
             <HomeCard
               title={item.name}
@@ -87,6 +144,7 @@ const styles = StyleSheet.create({
 const coffeeListStyle = StyleSheet.create({
   contentContainer: {
     paddingBottom: 16,
-    paddingLeft: 38,
+    marginLeft: 38,
+    flex: 1,
   },
 });

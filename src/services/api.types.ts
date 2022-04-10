@@ -9,4 +9,9 @@ export declare namespace Api {
     price: string;
     image_url: string;
   };
+
+  export type Category = {
+    id: string;
+    name: string;
+  };
 }

@@ -1,19 +1,37 @@
-import { StyleProp, StyleSheet, Text, TextStyle, View, ViewStyle } from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 
 type ButtonTextProps = {
   text: string;
   outline?: boolean;
+  onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 };
 
-export function ButtonText({ outline = false, text, style, textStyle }: ButtonTextProps) {
+export function ButtonText({
+  outline = false,
+  text,
+  onPress,
+  style,
+  textStyle,
+}: ButtonTextProps) {
   return (
-    <View style={[styles.container, outline ? styles.containerOutline : {}, style]}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={onPress}
+      style={[styles.container, outline ? styles.containerOutline : {}, style]}
+    >
       <Text style={[styles.text, outline ? styles.textOutline : {}, textStyle]}>
         {text}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
 

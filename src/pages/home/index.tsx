@@ -102,8 +102,12 @@ export function Home() {
           data={filteredCoffees}
           numColumns={2}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={coffeeListStyle.contentContainer}
+          contentContainerStyle={[
+            coffeeListStyle.contentContainer,
+            filteredCoffees.length === 0 ? { flex: 1 } : undefined,
+          ]}
           ListEmptyComponent={<EmptyList isLoading={isLoading} />}
+          columnWrapperStyle={{ marginBottom: 16 }}
           renderItem={({ item, index }) => (
             <HomeCard
               title={item.name}
@@ -111,8 +115,8 @@ export function Home() {
               stars={item.stars}
               image_url={item.image_url}
               style={{
-                marginBottom: 16,
-                marginRight: index % 2 === 0 ? 16 : 0,
+                marginRight:
+                  index % 2 === 0 && index !== filteredCoffees.length - 1 ? 16 : 0,
               }}
             />
           )}
@@ -145,6 +149,5 @@ const coffeeListStyle = StyleSheet.create({
   contentContainer: {
     paddingBottom: 16,
     marginLeft: 38,
-    flex: 1,
   },
 });

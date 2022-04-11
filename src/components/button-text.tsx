@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontFamily: 'Rosarivo_400Regular',
+    color: '#201520',
   },
 
   textOutline: {

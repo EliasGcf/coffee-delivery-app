@@ -41,6 +41,7 @@ export function Description() {
         contentContainerStyle={styles.scrollViewContainer}
       >
         <View style={styles.imageWrapper}>
+          {/* Todo: Go back button */}
           <Image
             source={{ uri: coffee.image_url }}
             style={styles.image}

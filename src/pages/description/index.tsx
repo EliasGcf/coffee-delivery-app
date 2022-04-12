@@ -1,4 +1,5 @@
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -7,32 +8,13 @@ import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 import { ButtonText } from '~/components/button-text';
 import { Row } from '~/components/row';
 
-import { Api } from '~/services/api.types';
-
-const coffee: Api.Coffee = {
-  id: '1',
-  name: 'Espresso',
-  simple_description: 'Also known as a short black',
-  description:
-    'Also known as a short black, an espresso is a single shot of coffee. No extra hot water is added, resulting in an intense and flavoursome drink.\n\nAn espresso shot, which forms the basis of many of the other drinks to follow, is produced by forcing hot water through finely ground coffee beans.',
-  price: '$2.00',
-  stars: 4.4,
-  image_url:
-    'https://res.cloudinary.com/eliasgcf/image/upload/v1649461044/coffee%20delivery%20app/jeremy-yap-jn-HaGWe4yw-unsplash_hqc04t.jpg',
-  categoryId: '4',
-  milk_options: [
-    'No Milk',
-    'Oat Milk',
-    'Soy Milk',
-    'Almond Milk',
-    'Coconut Milk',
-    'Cream',
-  ],
-};
+import { DescriptionScreenRouteProp } from '~/routes/routes.type';
 
 export function Description() {
   const [selectedMilk, setSelectedMilk] = useState('');
   const [showFullDescription, setShowFullDescription] = useState(false);
+
+  const { params } = useRoute<DescriptionScreenRouteProp>();
 
   return (
     <View style={styles.container}>
@@ -43,7 +25,7 @@ export function Description() {
         <View style={styles.imageWrapper}>
           {/* Todo: Go back button */}
           <Image
-            source={{ uri: coffee.image_url }}
+            source={{ uri: params.coffee.image_url }}
             style={styles.image}
             resizeMode="cover"
           />
@@ -51,21 +33,23 @@ export function Description() {
 
         <View style={styles.main}>
           <Row style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-            <Text style={styles.nameText}>{coffee.name}</Text>
+            <Text style={styles.nameText}>{params.coffee.name}</Text>
             <AntDesign name="heart" size={24} color="#C94C4C" />
           </Row>
 
           <Row style={{ marginTop: 8, alignItems: 'center' }}>
-            <Text style={styles.shortDescriptionText}>{coffee.simple_description}</Text>
+            <Text style={styles.shortDescriptionText}>
+              {params.coffee.simple_description}
+            </Text>
             <FontAwesome name="star" size={12} color="#D3A601" />
-            <Text style={styles.starText}>{coffee.stars}</Text>
+            <Text style={styles.starText}>{params.coffee.stars}</Text>
           </Row>
 
           <Text
             style={styles.descriptionText}
             numberOfLines={showFullDescription ? undefined : 3}
           >
-            {coffee.description}
+            {params.coffee.description}
           </Text>
 
           <Text
@@ -83,7 +67,7 @@ export function Description() {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 16 }}
           >
-            {coffee.milk_options.map((milk, index) => (
+            {params.coffee.milk_options.map((milk, index) => (
               <ButtonText
                 onPress={() => setSelectedMilk(milk)}
                 key={index}
@@ -98,7 +82,7 @@ export function Description() {
         <Row style={styles.checkoutContainer}>
           <View style={{ marginRight: 35 }}>
             <Text style={styles.priceLabel}>Price</Text>
-            <Text style={styles.amountText}>{coffee.price}</Text>
+            <Text style={styles.amountText}>{params.coffee.price}</Text>
           </View>
 
           <ButtonText

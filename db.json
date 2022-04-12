@@ -9,7 +9,7 @@
       "stars": 4.4,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461044/coffee%20delivery%20app/jeremy-yap-jn-HaGWe4yw-unsplash_hqc04t.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["No Milk"]
     },
     {
       "id": "2",
@@ -20,7 +20,7 @@
       "stars": 2.2,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461307/coffee%20delivery%20app/double-espresso_sskxca.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["No Milk"]
     },
     {
       "id": "3",
@@ -42,7 +42,7 @@
       "stars": 2.6,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461492/coffee%20delivery%20app/ede9652f559e4948808c058843c97574_cdupde.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["No Milk"]
     },
     {
       "id": "5",
@@ -53,7 +53,7 @@
       "stars": 3.2,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461519/coffee%20delivery%20app/Long-Macchiato-2-scaled_l24nal.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "6",
@@ -64,7 +64,7 @@
       "stars": 1.9,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461571/coffee%20delivery%20app/long-short-macchiato_jkrbor.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "7",
@@ -75,7 +75,7 @@
       "stars": 4.3,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461615/coffee%20delivery%20app/0517a8e29d3d7a3ff4bdfde7e090ab6f--italian-pronunciation-perth_1024x1024_hnz7kc.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "8",
@@ -86,7 +86,7 @@
       "stars": 3.0,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461669/coffee%20delivery%20app/cappuccino-2029-e80b7c6d318c7862df2c4c8623a11f99_1x_uycqyi.jpg",
       "categoryId": "1",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "9",
@@ -97,7 +97,7 @@
       "stars": 3.4,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461732/coffee%20delivery%20app/how-to-make-a-latte-at-home_vaaqn9.jpg",
       "categoryId": "2",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "10",
@@ -108,7 +108,7 @@
       "stars": 1.8,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649462667/coffee%20delivery%20app/fedee22e49724cd09fbcc7ee2e567377_zij2ww.jpg",
       "categoryId": "5",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "11",
@@ -119,7 +119,7 @@
       "stars": 3.1,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461766/coffee%20delivery%20app/mocha-latte-recipe_lzkhqx.jpg",
       "categoryId": "2",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
     },
     {
       "id": "12",
@@ -130,7 +130,7 @@
       "stars": 3.9,
       "image_url": "https://res.cloudinary.com/eliasgcf/image/upload/v1649461806/coffee%20delivery%20app/k_2FPhoto_2FRecipes_2F2020-07-How-to-make-affogato-at-home_2FKitchn_HowTo_Affogato_0281_pyghsl.jpg",
       "categoryId": "4",
-      "milk_options": ["No Milk", "Oat Milk", "Soy Milk", "Almond Milk", "Coconut Milk", "Cream"]
+      "milk_options": ["No Milk"]
     },
     {
       "id": "13",

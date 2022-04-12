@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 type HomeCardProps = {
   title: string;
@@ -15,11 +16,19 @@ type HomeCardProps = {
   image_url: string;
   stars: number;
   style?: StyleProp<ViewStyle>;
+  onPress?: () => void;
 };
 
-export function HomeCard({ title, amount, image_url, stars, style }: HomeCardProps) {
+export function HomeCard({
+  title,
+  amount,
+  image_url,
+  stars,
+  style,
+  onPress,
+}: HomeCardProps) {
   return (
-    <View style={[styles.container, style]}>
+    <RectButton onPress={onPress} style={[styles.container, style]}>
       <View>
         <Image style={styles.image} source={{ uri: image_url }} resizeMode="cover" />
         <Text style={styles.coffeeName}>{title}</Text>
@@ -39,7 +48,7 @@ export function HomeCard({ title, amount, image_url, stars, style }: HomeCardPro
           <Feather name="plus" size={24} color="black" />
         </TouchableOpacity>
       </View>
-    </View>
+    </RectButton>
   );
 }
 

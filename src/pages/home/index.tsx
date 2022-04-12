@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { useMemo, useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -46,6 +47,8 @@ export function Home() {
   const [searchValue, setSearchValue] = useState('');
   const [mainContainerHeight, setMainContainerHeight] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<Api.Category | null>(null);
+
+  const navigation = useNavigation();
 
   const filteredCoffees = useMemo<Api.Coffee[]>(() => {
     return coffees.filter((coffee) =>
@@ -114,6 +117,7 @@ export function Home() {
               amount={item.price}
               stars={item.stars}
               image_url={item.image_url}
+              onPress={() => navigation.navigate('Description', { coffee: item })}
               style={{
                 marginRight:
                   index % 2 === 0 && index !== filteredCoffees.length - 1 ? 16 : 0,

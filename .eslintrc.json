@@ -41,6 +41,7 @@
           "/^~/common/",
           "/^~/components/",
           "/^~/pages/",
+          "/^~/routes/",
           "/^~/services/",
           ["parent", "sibling"],
           "index"

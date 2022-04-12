@@ -4,6 +4,7 @@ import {
   OpenSans_600SemiBold,
 } from '@expo-google-fonts/open-sans';
 import { Rosarivo_400Regular } from '@expo-google-fonts/rosarivo';
+import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
@@ -24,9 +25,9 @@ export function App() {
   }
 
   return (
-    <>
+    <NavigationContainer>
       <StatusBar style="light" />
       <Routes />
-    </>
+    </NavigationContainer>
   );
 }

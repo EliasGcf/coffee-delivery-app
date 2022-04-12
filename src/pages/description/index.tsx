@@ -1,11 +1,12 @@
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
-import { useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 
 import { ButtonText } from '~/components/button-text';
+import { GoBackButton } from '~/components/go-back-button';
 import { Row } from '~/components/row';
 
 import { DescriptionScreenRouteProp } from '~/routes/routes.type';
@@ -16,6 +17,8 @@ export function Description() {
 
   const { params } = useRoute<DescriptionScreenRouteProp>();
 
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -23,21 +26,24 @@ export function Description() {
         contentContainerStyle={styles.scrollViewContainer}
       >
         <View style={styles.imageWrapper}>
-          {/* Todo: Go back button */}
-          <Image
-            source={{ uri: params.coffee.image_url }}
-            style={styles.image}
-            resizeMode="cover"
-          />
+          <View>
+            <Image
+              source={{ uri: params.coffee.image_url }}
+              style={styles.image}
+              resizeMode="cover"
+            />
+
+            <GoBackButton style={styles.goBackButton} />
+          </View>
         </View>
 
         <View style={styles.main}>
-          <Row style={{ alignItems: 'center', justifyContent: 'space-between' }}>
+          <Row style={{ justifyContent: 'space-between' }}>
             <Text style={styles.nameText}>{params.coffee.name}</Text>
             <AntDesign name="heart" size={24} color="#C94C4C" />
           </Row>
 
-          <Row style={{ marginTop: 8, alignItems: 'center' }}>
+          <Row style={{ marginTop: 8 }}>
             <Text style={styles.shortDescriptionText}>
               {params.coffee.simple_description}
             </Text>
@@ -89,6 +95,7 @@ export function Description() {
             text="BUY NOW"
             style={{ flex: 1, height: 45 }}
             textStyle={styles.buyButtonText}
+            onPress={() => navigation.navigate('TabRoutes', { screen: 'Cart' })}
           />
         </Row>
       </ScrollView>
@@ -114,6 +121,12 @@ const styles = StyleSheet.create({
 
   imageWrapper: {
     paddingHorizontal: 16,
+  },
+
+  goBackButton: {
+    position: 'absolute',
+    left: 10,
+    top: 24,
   },
 
   image: {
@@ -169,7 +182,6 @@ const styles = StyleSheet.create({
 
   checkoutContainer: {
     marginTop: 45,
-    alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
   },

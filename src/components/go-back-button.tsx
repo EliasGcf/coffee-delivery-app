@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
 
   blurContainer: {
+    borderRadius: 20,
     height: '100%',
     width: '100%',
     alignItems: 'center',

@@ -113,10 +113,7 @@ export function Home() {
           columnWrapperStyle={{ marginBottom: 16 }}
           renderItem={({ item, index }) => (
             <HomeCard
-              title={item.name}
-              amount={item.price}
-              stars={item.stars}
-              image_url={item.image_url}
+              coffee={item}
               onPress={() => navigation.navigate('Description', { coffee: item })}
               style={{
                 marginRight:

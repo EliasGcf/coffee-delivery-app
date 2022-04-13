@@ -1,6 +1,7 @@
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useState } from 'react';
+import { useCart } from '~/store/cart/cart-store';
+import { useCallback, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
@@ -16,8 +17,13 @@ export function Description() {
   const [showFullDescription, setShowFullDescription] = useState(false);
 
   const { params } = useRoute<DescriptionScreenRouteProp>();
-
   const navigation = useNavigation();
+  const addItemToCart = useCart((state) => state.add);
+
+  const handlePayButton = useCallback(() => {
+    addItemToCart(params.coffee);
+    navigation.navigate('TabRoutes', { screen: 'Cart' });
+  }, [addItemToCart, navigation, params.coffee]);
 
   return (
     <View style={styles.container}>
@@ -95,7 +101,7 @@ export function Description() {
             text="BUY NOW"
             style={{ flex: 1, height: 45 }}
             textStyle={styles.buyButtonText}
-            onPress={() => navigation.navigate('TabRoutes', { screen: 'Cart' })}
+            onPress={handlePayButton}
           />
         </Row>
       </ScrollView>

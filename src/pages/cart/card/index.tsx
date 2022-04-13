@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Rosarivo_400Regular',
     color: '#fff',
+    maxWidth: 150,
   },
 
   amountText: {

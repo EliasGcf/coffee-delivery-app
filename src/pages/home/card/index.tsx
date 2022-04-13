@@ -1,52 +1,46 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
-import {
-  Image,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  ViewStyle,
-} from 'react-native';
-import { RectButton } from 'react-native-gesture-handler';
+import { useCart } from '~/store/cart/cart-store';
+import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+
+import { Api } from '~/services/api.types';
 
 type HomeCardProps = {
-  title: string;
-  amount: string;
-  image_url: string;
-  stars: number;
+  coffee: Api.Coffee;
   style?: StyleProp<ViewStyle>;
   onPress?: () => void;
 };
 
-export function HomeCard({
-  title,
-  amount,
-  image_url,
-  stars,
-  style,
-  onPress,
-}: HomeCardProps) {
+export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
+  const addItemToCart = useCart((state) => state.add);
+
   return (
     <RectButton onPress={onPress} style={[styles.container, style]}>
       <View>
-        <Image style={styles.image} source={{ uri: image_url }} resizeMode="cover" />
-        <Text style={styles.coffeeName}>{title}</Text>
+        <Image
+          style={styles.image}
+          source={{ uri: coffee.image_url }}
+          resizeMode="cover"
+        />
+        <Text style={styles.coffeeName}>{coffee.name}</Text>
 
         <View style={styles.starBadgeContainer}>
           <FontAwesome name="star" size={10} color="#D3A601" />
-          <Text style={styles.starText}>{stars}</Text>
+          <Text style={styles.starText}>{coffee.stars}</Text>
         </View>
       </View>
 
       <View style={styles.footer}>
         <View style={styles.amountCenter}>
-          <Text style={styles.amount}>{amount}</Text>
+          <Text style={styles.amount}>{coffee.price}</Text>
         </View>
 
-        <TouchableOpacity activeOpacity={0.7} style={styles.amountPlusContainer}>
+        <BorderlessButton
+          onPress={() => addItemToCart(coffee)}
+          style={styles.amountPlusContainer}
+        >
           <Feather name="plus" size={24} color="black" />
-        </TouchableOpacity>
+        </BorderlessButton>
       </View>
     </RectButton>
   );

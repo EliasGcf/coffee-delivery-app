@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { Routes } from '~/routes/app.routes';
 
@@ -25,9 +26,11 @@ export function App() {
   }
 
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
-      <Routes />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#201520' }}>
+      <NavigationContainer>
+        <StatusBar style="light" />
+        <Routes />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }

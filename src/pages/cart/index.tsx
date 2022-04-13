@@ -1,40 +1,36 @@
 import { EvilIcons } from '@expo/vector-icons';
+import { useCart } from '~/store/cart/cart-store';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import CoffeeImg from '~/assets/coffee-description.png';
-
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
-
-import { CartCard } from '~/pages/cart/card';
 
 import { ButtonText } from '~/components/button-text';
 import { Divider } from '~/components/divider';
 import { Row } from '~/components/row';
 import { Ticket } from '~/components/ticket';
 
+import { CartCard } from '~/pages/cart/card';
+
 export function Cart() {
+  const items = useCart((state) => state.items);
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cart</Text>
 
       <View style={styles.main}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <CartCard
-            title="Cappuccino"
-            subTitle="Dalgona Macha"
-            amount="₹299"
-            image={CoffeeImg}
-            quantity={1}
-          />
-
-          <CartCard
-            title="Cappuccino"
-            subTitle="Dalgona Macha"
-            amount="₹299"
-            image={CoffeeImg}
-            quantity={2}
-            style={{ marginTop: 16 }}
-          />
+          {items.map((item, index) => (
+            <CartCard
+              key={item.coffee.id}
+              title={item.coffee.name}
+              subTitle={item.coffee.simple_description}
+              amount={item.coffee.price}
+              image={{ uri: item.coffee.image_url }}
+              quantity={item.quantity}
+              style={index !== 0 ? { marginTop: 16 } : undefined}
+            />
+          ))}
 
           <Divider style={{ marginVertical: 20 }} />
 

@@ -14,6 +14,12 @@ type HomeCardProps = {
 
 export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
   const addItemToCart = useCart((state) => state.add);
+  const setShowCartDot = useCart((state) => state.setShowDot);
+
+  function handleOnPress() {
+    addItemToCart(coffee);
+    setShowCartDot(true);
+  }
 
   return (
     <TouchableOpacity
@@ -40,10 +46,7 @@ export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
           <Text style={styles.amount}>{coffee.formatted_price}</Text>
         </View>
 
-        <BorderlessButton
-          onPress={() => addItemToCart(coffee)}
-          style={styles.amountPlusContainer}
-        >
+        <BorderlessButton onPress={handleOnPress} style={styles.amountPlusContainer}>
           <Feather name="plus" size={24} color="black" />
         </BorderlessButton>
       </View>

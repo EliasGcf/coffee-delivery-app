@@ -1,3 +1,6 @@
+import 'intl';
+import 'intl/locale-data/jsonp/en';
+
 import {
   OpenSans_400Regular,
   OpenSans_700Bold,

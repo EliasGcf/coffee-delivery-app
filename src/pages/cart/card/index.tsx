@@ -60,6 +60,8 @@ const styles = StyleSheet.create({
   textWrapper: {
     justifyContent: 'space-between',
     marginLeft: 12,
+    flex: 1,
+    paddingRight: 8,
   },
 
   itemText: {
@@ -72,7 +74,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontFamily: 'Rosarivo_400Regular',
     color: '#fff',
-    maxWidth: 150,
   },
 
   amountText: {
@@ -83,10 +84,6 @@ const styles = StyleSheet.create({
 
   quantityWrapper: {
     backgroundColor: '#463D46',
-    alignItems: 'center',
-    marginLeft: 'auto',
-    height: 30,
-    alignSelf: 'center',
   },
 
   quantityText: {

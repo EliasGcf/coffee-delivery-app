@@ -4,13 +4,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import BellSvg from '~/assets/svg/bell.svg';
-import CartSvg from '~/assets/svg/cart.svg';
 import HeartSvg from '~/assets/svg/heart.svg';
 import HomeSvg from '~/assets/svg/home.svg';
 
 import { Cart } from '~/pages/cart';
 import { Description } from '~/pages/description';
 import { Home } from '~/pages/home';
+
+import { CartIcon } from '~/routes/icons/cart-icon';
 
 function EmptyPage() {
   return null;
@@ -37,11 +38,7 @@ function TabRoutes() {
         options={{ tabBarIcon: ({ color }) => <HomeSvg fill={color} /> }}
       />
 
-      <Tab.Screen
-        name="Cart"
-        component={Cart}
-        options={{ tabBarIcon: ({ color }) => <CartSvg fill={color} /> }}
-      />
+      <Tab.Screen name="Cart" component={Cart} options={{ tabBarIcon: CartIcon }} />
 
       <Tab.Screen
         name="Favorites"

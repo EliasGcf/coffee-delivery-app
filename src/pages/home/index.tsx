@@ -103,6 +103,7 @@ export function Home() {
 
         <FlatList
           showsVerticalScrollIndicator={false}
+          style={coffeeListStyle.list}
           data={filteredCoffees}
           numColumns={2}
           keyExtractor={(item) => item.id}
@@ -148,8 +149,11 @@ const styles = StyleSheet.create({
 });
 
 const coffeeListStyle = StyleSheet.create({
+  list: {
+    marginLeft: 38,
+  },
+
   contentContainer: {
     paddingBottom: 16,
-    marginLeft: 38,
   },
 });

@@ -15,10 +15,12 @@ export type CartItem = {
 };
 
 type CartStore = {
+  showDot: boolean;
   items: CartItem[];
   amount: number;
   add: (coffee: Api.Coffee) => void;
   remove: (coffee: Api.Coffee) => void;
+  setShowDot: (showDot: boolean) => void;
 };
 
 const middleware =
@@ -49,6 +51,8 @@ export const useCart = create<CartStore>(
   middleware(
     persist<CartStore>(
       (set) => ({
+        showDot: false,
+
         items: [],
 
         amount: 0,
@@ -98,6 +102,10 @@ export const useCart = create<CartStore>(
               }),
             };
           });
+        },
+
+        setShowDot: (showDot: boolean) => {
+          set({ showDot });
         },
       }),
       {

@@ -1,4 +1,6 @@
 import { EvilIcons } from '@expo/vector-icons';
+import { useFocusEffect } from '@react-navigation/native';
+import { useCallback } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
@@ -17,13 +19,23 @@ import { formatCurrency } from '~/utils/format-currency';
 export function Cart() {
   const items = useCart((state) => state.items);
   const amount = useCart((state) => state.amount);
+  const setShowDot = useCart((state) => state.setShowDot);
+
+  useFocusEffect(
+    useCallback(() => {
+      setShowDot(false);
+    }, [setShowDot])
+  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Cart</Text>
 
       <View style={styles.main}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={styles.scrollViewContentStyle}
+        >
           {items.length === 0 ? (
             <Text style={styles.emptyText}>Cart is empty...</Text>
           ) : (
@@ -85,6 +97,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 16,
     paddingBottom: 36,
+  },
+
+  scrollViewContentStyle: {
+    paddingBottom: 16,
   },
 
   emptyText: {

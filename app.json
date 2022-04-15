@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "coffee-delivery",
+    "name": "Coffee Delivery",
     "slug": "coffee-delivery",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,13 +13,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.eliasgcf.coffee-delivery"
     },
     "android": {
+      "package": "com.eliasgcf.coffee_delivery",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#201520"

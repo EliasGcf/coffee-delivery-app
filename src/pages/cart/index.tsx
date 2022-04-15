@@ -3,8 +3,6 @@ import { useFocusEffect } from '@react-navigation/native';
 import { useCallback } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
-
 import { ButtonText } from '~/components/button-text';
 import { Divider } from '~/components/divider';
 import { Row } from '~/components/row';
@@ -29,8 +27,6 @@ export function Cart() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Cart</Text>
-
       <View style={styles.main}>
         <ScrollView
           showsVerticalScrollIndicator={false}
@@ -88,8 +84,6 @@ export function Cart() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#201520',
-    paddingTop: STATUSBAR_HEIGHT,
   },
 
   main: {

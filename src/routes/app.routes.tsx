@@ -24,32 +24,66 @@ function TabRoutes() {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      sceneContainerStyle={{ backgroundColor: '#201520' }}
       screenOptions={{
-        headerShown: false,
-        tabBarStyle: { backgroundColor: '#22151F', borderTopWidth: 0 },
+        tabBarStyle: {
+          backgroundColor: '#22151F',
+
+          borderTopWidth: 0,
+          elevation: 8,
+          shadowColor: '#fff',
+          shadowOpacity: 0.2,
+          shadowRadius: 2,
+
+          shadowOffset: { height: 1, width: 1 },
+        },
         tabBarShowLabel: false,
         tabBarActiveTintColor: '#EFE3C8',
         tabBarInactiveTintColor: '#746763',
+
+        headerStyle: {
+          backgroundColor: '#201520',
+          shadowColor: 'transparent',
+        },
+        headerTitleAlign: 'center',
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontSize: 24,
+          fontFamily: 'Rosarivo_400Regular',
+        },
       }}
     >
       <Tab.Screen
         name="Home"
         component={Home}
-        options={{ tabBarIcon: ({ color }) => <HomeSvg fill={color} /> }}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color }) => <HomeSvg fill={color} />,
+        }}
       />
 
-      <Tab.Screen name="Cart" component={Cart} options={{ tabBarIcon: CartIcon }} />
+      <Tab.Screen
+        name="Cart"
+        component={Cart}
+        options={{
+          tabBarIcon: CartIcon,
+        }}
+      />
 
       <Tab.Screen
         name="Favorites"
         component={EmptyPage}
-        options={{ tabBarIcon: ({ color }) => <HeartSvg fill={color} /> }}
+        options={{
+          tabBarIcon: ({ color }) => <HeartSvg fill={color} />,
+        }}
       />
 
       <Tab.Screen
         name="Notifications"
         component={EmptyPage}
-        options={{ tabBarIcon: ({ color }) => <BellSvg fill={color} /> }}
+        options={{
+          tabBarIcon: ({ color }) => <BellSvg fill={color} />,
+        }}
       />
     </Tab.Navigator>
   );

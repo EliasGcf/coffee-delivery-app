@@ -1,49 +1,109 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import create from 'zustand';
+import create, { GetState, SetState, StoreApi } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { Api } from '~/services/api.types';
 
+import { formatCurrency } from '~/utils/format-currency';
+
 // AsyncStorage.clear();
 
-type Item = {
+export type CartItem = {
   coffee: Api.Coffee;
+  formattedPrice: string;
   quantity: number;
 };
 
 type CartStore = {
-  items: Item[];
+  items: CartItem[];
+  amount: number;
   add: (coffee: Api.Coffee) => void;
+  remove: (coffee: Api.Coffee) => void;
 };
 
-export const useCart = create(
-  persist<CartStore>(
-    (set) => ({
-      items: [],
+const middleware =
+  (config: any) =>
+  (set: SetState<CartStore>, get: GetState<CartStore>, api: StoreApi<CartStore>) =>
+    config(
+      (args: CartStore) => {
+        const amount = get().items.reduce((acc, item) => {
+          return acc + item.quantity * item.coffee.price;
+        }, 0);
 
-      add: (coffee: Api.Coffee) => {
-        set((state) => {
-          const itemExists = state.items.find((fItem) => fItem.coffee.id === coffee.id);
+        set({ amount });
+        set(args);
+      },
+      () => {
+        const amount = get().items.reduce((acc, item) => {
+          return acc + item.quantity * item.coffee.price;
+        }, 0);
 
-          if (itemExists) {
+        set({ amount });
+
+        return get();
+      },
+      api
+    );
+
+export const useCart = create<CartStore>(
+  middleware(
+    persist<CartStore>(
+      (set) => ({
+        items: [],
+
+        amount: 0,
+
+        add: (coffee: Api.Coffee) => {
+          set((state) => {
+            const item = state.items.find((fItem) => fItem.coffee.id === coffee.id);
+
+            if (item) {
+              return {
+                items: state.items.map((fItem) => {
+                  if (fItem.coffee.id === coffee.id) {
+                    return { ...fItem, quantity: fItem.quantity + 1 };
+                  }
+
+                  return fItem;
+                }),
+              };
+            }
+
+            return {
+              items: [
+                ...state.items,
+                { coffee, quantity: 1, formattedPrice: formatCurrency(coffee.price) },
+              ],
+            };
+          });
+        },
+
+        remove: (coffee: Api.Coffee) => {
+          set((state) => {
+            const item = state.items.find((fItem) => fItem.coffee.id === coffee.id);
+
+            if (item?.quantity === 1) {
+              return {
+                items: state.items.filter((fItem) => fItem.coffee.id !== coffee.id),
+              };
+            }
+
             return {
               items: state.items.map((fItem) => {
                 if (fItem.coffee.id === coffee.id) {
-                  return { ...fItem, quantity: fItem.quantity + 1 };
+                  return { ...fItem, quantity: fItem.quantity - 1 };
                 }
 
                 return fItem;
               }),
             };
-          }
-
-          return { items: [...state.items, { coffee, quantity: 1 }] };
-        });
-      },
-    }),
-    {
-      name: '@coffee/cart',
-      getStorage: () => AsyncStorage,
-    }
+          });
+        },
+      }),
+      {
+        name: '@coffee/cart',
+        getStorage: () => AsyncStorage,
+      }
+    )
   )
 );

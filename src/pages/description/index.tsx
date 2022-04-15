@@ -1,6 +1,5 @@
 import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { useCart } from '~/store/cart/cart-store';
 import { useCallback, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 
@@ -11,6 +10,8 @@ import { GoBackButton } from '~/components/go-back-button';
 import { Row } from '~/components/row';
 
 import { DescriptionScreenRouteProp } from '~/routes/routes.type';
+
+import { useCart } from '~/store/cart/cart-store';
 
 export function Description() {
   const [selectedMilk, setSelectedMilk] = useState('');
@@ -94,7 +95,7 @@ export function Description() {
         <Row style={styles.checkoutContainer}>
           <View style={{ marginRight: 35 }}>
             <Text style={styles.priceLabel}>Price</Text>
-            <Text style={styles.amountText}>{params.coffee.price}</Text>
+            <Text style={styles.amountText}>{params.coffee.formatted_price}</Text>
           </View>
 
           <ButtonText

@@ -1,9 +1,10 @@
 import { Feather, FontAwesome } from '@expo/vector-icons';
-import { useCart } from '~/store/cart/cart-store';
 import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
-import { BorderlessButton, RectButton } from 'react-native-gesture-handler';
+import { BorderlessButton, TouchableOpacity } from 'react-native-gesture-handler';
 
 import { Api } from '~/services/api.types';
+
+import { useCart } from '~/store/cart/cart-store';
 
 type HomeCardProps = {
   coffee: Api.Coffee;
@@ -15,7 +16,11 @@ export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
   const addItemToCart = useCart((state) => state.add);
 
   return (
-    <RectButton onPress={onPress} style={[styles.container, style]}>
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={onPress}
+      style={[styles.container, style]}
+    >
       <View>
         <Image
           style={styles.image}
@@ -32,7 +37,7 @@ export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
 
       <View style={styles.footer}>
         <View style={styles.amountCenter}>
-          <Text style={styles.amount}>{coffee.price}</Text>
+          <Text style={styles.amount}>{coffee.formatted_price}</Text>
         </View>
 
         <BorderlessButton
@@ -42,7 +47,7 @@ export function HomeCard({ coffee, style, onPress }: HomeCardProps) {
           <Feather name="plus" size={24} color="black" />
         </BorderlessButton>
       </View>
-    </RectButton>
+    </TouchableOpacity>
   );
 }
 

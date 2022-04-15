@@ -17,7 +17,7 @@ import { Input } from '~/components/input';
 
 import { HomeCard } from '~/pages/home/card';
 
-import { api } from '~/services/api';
+import { api, useApi } from '~/services/api';
 import { Api } from '~/services/api.types';
 
 function EmptyList({ isLoading }: { isLoading: boolean }) {
@@ -50,6 +50,8 @@ export function Home() {
 
   const navigation = useNavigation();
 
+  const { getCoffees } = useApi();
+
   const filteredCoffees = useMemo<Api.Coffee[]>(() => {
     return coffees.filter((coffee) =>
       coffee.name.toLowerCase().includes(searchValue.toLowerCase())
@@ -76,11 +78,10 @@ export function Home() {
     setCoffees([]);
     setSearchValue('');
 
-    api
-      .get(`coffees?categoryId=${selectedCategory.id}`)
+    getCoffees({ categoryId: selectedCategory.id })
       .then((response) => setCoffees(response.data))
       .finally(() => setIsLoading(false));
-  }, [selectedCategory]);
+  }, [getCoffees, selectedCategory]);
 
   return (
     <View style={styles.container}>

@@ -43,6 +43,8 @@
           "/^~/pages/",
           "/^~/routes/",
           "/^~/services/",
+          "/^~/store/",
+          "/^~/utils/",
           ["parent", "sibling"],
           "index"
         ],

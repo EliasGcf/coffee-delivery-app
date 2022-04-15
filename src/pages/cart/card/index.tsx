@@ -1,52 +1,42 @@
 import { Feather } from '@expo/vector-icons';
-import {
-  Image,
-  ImageSourcePropType,
-  StyleProp,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle,
-} from 'react-native';
+import { Image, StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
 
 import { IconButton } from '~/components/icon-button';
 import { Row } from '~/components/row';
 
+import { CartItem, useCart } from '~/store/cart/cart-store';
+
 type CartCardProps = {
-  title: string;
-  subTitle: string;
-  amount: string;
-  quantity: number;
-  image: ImageSourcePropType;
+  item: CartItem;
   style?: StyleProp<ViewStyle>;
 };
 
-export function CartCard({
-  title,
-  subTitle,
-  amount,
-  quantity,
-  image,
-  style,
-}: CartCardProps) {
+export function CartCard({ item, style }: CartCardProps) {
+  const removeCoffeeFromCart = useCart((state) => state.remove);
+  const addCoffeeToCart = useCart((state) => state.add);
+
   return (
     <Row style={[styles.card, style]}>
-      <Image source={image} style={styles.image} resizeMode="cover" />
+      <Image
+        source={{ uri: item.coffee.image_url }}
+        style={styles.image}
+        resizeMode="cover"
+      />
 
       <View style={styles.textWrapper}>
-        <Text style={styles.itemText}>{title}</Text>
-        <Text style={styles.subItemText}>{subTitle}</Text>
-        <Text style={styles.amountText}>{amount}</Text>
+        <Text style={styles.itemText}>{item.coffee.name}</Text>
+        <Text style={styles.subItemText}>{item.coffee.simple_description}</Text>
+        <Text style={styles.amountText}>{item.coffee.formatted_price}</Text>
       </View>
 
       <Row style={styles.quantityWrapper}>
-        <IconButton>
+        <IconButton onPress={() => removeCoffeeFromCart(item.coffee)}>
           <Feather name="minus" size={22} color="#1C161E" />
         </IconButton>
 
-        <Text style={styles.quantityText}>{quantity}</Text>
+        <Text style={styles.quantityText}>{item.quantity}</Text>
 
-        <IconButton>
+        <IconButton onPress={() => addCoffeeToCart(item.coffee)}>
           <Feather name="plus" size={22} color="#1C161E" />
         </IconButton>
       </Row>

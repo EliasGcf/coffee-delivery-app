@@ -18,6 +18,7 @@ type CartStore = {
   showDot: boolean;
   items: CartItem[];
   amount: number;
+  clear: () => void;
   add: (coffee: Api.Coffee) => void;
   remove: (coffee: Api.Coffee) => void;
   setShowDot: (showDot: boolean) => void;
@@ -56,6 +57,10 @@ export const useCart = create<CartStore>(
         items: [],
 
         amount: 0,
+
+        clear: () => {
+          set({ items: [] });
+        },
 
         add: (coffee: Api.Coffee) => {
           set((state) => {

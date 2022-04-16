@@ -1,7 +1,7 @@
 import { EvilIcons } from '@expo/vector-icons';
-import { useFocusEffect } from '@react-navigation/native';
-import { useCallback } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { useCallback, useMemo } from 'react';
+import { Alert, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { ButtonText } from '~/components/button-text';
 import { Divider } from '~/components/divider';
@@ -17,13 +17,33 @@ import { formatCurrency } from '~/utils/format-currency';
 export function Cart() {
   const items = useCart((state) => state.items);
   const amount = useCart((state) => state.amount);
+  const clearCart = useCart((state) => state.clear);
   const setShowDot = useCart((state) => state.setShowDot);
+
+  const amountWithDelivery = useMemo(() => {
+    return amount + 6;
+  }, [amount]);
+
+  const navigation = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
       setShowDot(false);
     }, [setShowDot])
   );
+
+  function handlePayButton() {
+    Alert.alert('Payment', `You will pay ${formatCurrency(amountWithDelivery)}`, [
+      { text: 'Cancel', style: 'destructive' },
+      {
+        text: 'Pay',
+        onPress: () => {
+          clearCart();
+          navigation.reset({ routes: [{ name: 'TabRoutes' }] });
+        },
+      },
+    ]);
+  }
 
   return (
     <View style={styles.container}>
@@ -66,14 +86,16 @@ export function Cart() {
           <Row style={{ justifyContent: 'space-between' }}>
             <Text style={styles.totalText}>Grand Total</Text>
             <Text style={styles.totalAmountText}>
-              {formatCurrency(amount === 0 ? 0 : amount + 6)}
+              {formatCurrency(amount === 0 ? 0 : amountWithDelivery)}
             </Text>
           </Row>
         </ScrollView>
 
         <ButtonText
           text="PAY NOW"
-          style={styles.payButton}
+          onPress={handlePayButton}
+          disabled={items.length === 0}
+          style={[styles.payButton]}
           textStyle={styles.payButtonText}
         />
       </View>
@@ -145,6 +167,8 @@ const styles = StyleSheet.create({
     marginTop: 'auto',
     height: 45,
   },
+
+  payButtonDisabled: {},
 
   payButtonText: {
     fontSize: 16,

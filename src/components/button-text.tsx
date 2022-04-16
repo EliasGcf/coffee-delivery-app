@@ -11,6 +11,7 @@ type ButtonTextProps = {
   text: string;
   outline?: boolean;
   onPress?: () => void;
+  disabled?: boolean;
   style?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
 };
@@ -19,16 +20,30 @@ export function ButtonText({
   outline = false,
   text,
   onPress,
+  disabled = false,
   style,
   textStyle,
 }: ButtonTextProps) {
   return (
     <TouchableOpacity
+      disabled={disabled}
       activeOpacity={0.6}
       onPress={onPress}
-      style={[styles.container, outline ? styles.containerOutline : {}, style]}
+      style={[
+        styles.container,
+        outline ? styles.containerOutline : {},
+        style,
+        disabled ? styles.containerOutline : undefined,
+      ]}
     >
-      <Text style={[styles.text, outline ? styles.textOutline : {}, textStyle]}>
+      <Text
+        style={[
+          styles.text,
+          outline ? styles.textOutline : {},
+          textStyle,
+          disabled ? styles.textOutline : undefined,
+        ]}
+      >
         {text}
       </Text>
     </TouchableOpacity>

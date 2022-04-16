@@ -11,12 +11,9 @@ import { Cart } from '~/pages/cart';
 import { Description } from '~/pages/description';
 import { Favorites } from '~/pages/favorites';
 import { Home } from '~/pages/home';
+import { Notifications } from '~/pages/notifications';
 
 import { CartIcon } from '~/routes/icons/cart-icon';
-
-function EmptyPage() {
-  return null;
-}
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -81,7 +78,7 @@ function TabRoutes() {
 
       <Tab.Screen
         name="Notifications"
-        component={EmptyPage}
+        component={Notifications}
         options={{
           tabBarIcon: ({ color }) => <BellSvg fill={color} />,
         }}

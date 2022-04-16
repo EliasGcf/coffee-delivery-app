@@ -2,6 +2,7 @@ import { AntDesign, FontAwesome } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useCallback, useState } from 'react';
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 import { STATUSBAR_HEIGHT } from '~/common/statusbar-height';
 
@@ -12,6 +13,7 @@ import { Row } from '~/components/row';
 import { DescriptionScreenRouteProp } from '~/routes/routes.type';
 
 import { useCart } from '~/store/cart/cart-store';
+import { useFavorites } from '~/store/favorites/favorites-store';
 
 export function Description() {
   const [selectedMilk, setSelectedMilk] = useState('');
@@ -20,6 +22,10 @@ export function Description() {
   const { params } = useRoute<DescriptionScreenRouteProp>();
   const navigation = useNavigation();
   const addItemToCart = useCart((state) => state.add);
+
+  const isFavorite = useFavorites((state) => state.isFavorite(params.coffee.id));
+  const addItemToFavorites = useFavorites((state) => state.add);
+  const removeItemToFavorites = useFavorites((state) => state.remove);
 
   const handlePayButton = useCallback(() => {
     addItemToCart(params.coffee);
@@ -47,7 +53,19 @@ export function Description() {
         <View style={styles.main}>
           <Row style={{ justifyContent: 'space-between' }}>
             <Text style={styles.nameText}>{params.coffee.name}</Text>
-            <AntDesign name="heart" size={24} color="#C94C4C" />
+            <BorderlessButton
+              onPress={() =>
+                isFavorite
+                  ? removeItemToFavorites(params.coffee.id)
+                  : addItemToFavorites(params.coffee)
+              }
+            >
+              {isFavorite ? (
+                <AntDesign name="heart" size={24} color="#C94C4C" />
+              ) : (
+                <AntDesign name="hearto" size={24} color="#746763" />
+              )}
+            </BorderlessButton>
           </Row>
 
           <Row style={{ marginTop: 8 }}>

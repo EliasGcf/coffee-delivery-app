@@ -9,6 +9,7 @@ import HomeSvg from '~/assets/svg/home.svg';
 
 import { Cart } from '~/pages/cart';
 import { Description } from '~/pages/description';
+import { Favorites } from '~/pages/favorites';
 import { Home } from '~/pages/home';
 
 import { CartIcon } from '~/routes/icons/cart-icon';
@@ -72,7 +73,7 @@ function TabRoutes() {
 
       <Tab.Screen
         name="Favorites"
-        component={EmptyPage}
+        component={Favorites}
         options={{
           tabBarIcon: ({ color }) => <HeartSvg fill={color} />,
         }}

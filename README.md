@@ -7,9 +7,9 @@
   <a href="#-license">License</a>
 </p>
 
-<!-- <p align="center">
-  <img alt="Coffee Delivery Mockup" src=".github/mockup.png" width="100%">
-</p> -->
+<p align="center">
+  <img alt="Coffee Delivery Layout Image" src=".github/image.png" />
+</p>
 
 ## 🔖 Layout
 

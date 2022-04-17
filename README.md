@@ -45,6 +45,9 @@ git clone https://github.com/EliasGcf/coffee-delivery-app.git && cd coffee-deliv
 # Install the dependencies
 $ yarn
 
+# Make a copy of '.env.example' to '.env'
+$ cp .env.example .env
+
 # Run the JSON Server
 $ yarn json:sever
 

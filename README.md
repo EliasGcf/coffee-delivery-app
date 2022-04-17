@@ -1,4 +1,4 @@
-# Coffee Delivery
+# Coffee Delivery ☕️
 
 <p align="center">
   <a href="#-layout">Layout</a> •

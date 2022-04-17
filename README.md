@@ -1,6 +1,10 @@
 # Coffee Delivery ☕️
 
 <p align="center">
+  <a href="https://expo.dev/@eliasgcf/coffee-delivery"><img src=".github/expo.svg" alt="Expo Go" /></a>
+</p>
+
+<p align="center">
   <a href="#-layout">Layout</a> •
   <a href="#-technologies">Technologies</a> •
   <a href="#-getting-started">Getting started</a> •

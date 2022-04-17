@@ -1,4 +1,4 @@
-Coffee Delivery
+# Coffee Delivery
 
 <p align="center">
   <a href="#-layout">Layout</a> •
@@ -62,5 +62,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  Made with 💜 by <a href="https://www.linkedin.com/in/eliasgcf/">Elias Gabriel</a>
+  Made with 💜&nbsp; by <a href="https://www.linkedin.com/in/eliasgcf/">Elias Gabriel</a>
 </p>

@@ -8,7 +8,7 @@ import { Divider } from '~/components/divider';
 import { Row } from '~/components/row';
 import { Ticket } from '~/components/ticket';
 
-import { CartCard } from '~/pages/cart/card';
+import { CartCard } from '~/pages/cart/components/card';
 
 import { useCart } from '~/store/cart/cart-store';
 

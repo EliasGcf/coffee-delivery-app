@@ -20,6 +20,7 @@ type CartStore = {
   amount: number;
   clear: () => void;
   add: (coffee: Api.Coffee) => void;
+  decrement: (coffee: Api.Coffee) => void;
   remove: (coffee: Api.Coffee) => void;
   setShowDot: (showDot: boolean) => void;
 };
@@ -87,7 +88,7 @@ export const useCart = create<CartStore>(
           });
         },
 
-        remove: (coffee: Api.Coffee) => {
+        decrement: (coffee: Api.Coffee) => {
           set((state) => {
             const item = state.items.find((fItem) => fItem.coffee.id === coffee.id);
 
@@ -105,6 +106,14 @@ export const useCart = create<CartStore>(
 
                 return fItem;
               }),
+            };
+          });
+        },
+
+        remove: (coffee: Api.Coffee) => {
+          set((state) => {
+            return {
+              items: state.items.filter((item) => item.coffee.id !== coffee.id),
             };
           });
         },

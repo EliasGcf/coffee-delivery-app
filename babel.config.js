@@ -5,6 +5,7 @@ module.exports = function (api) {
     plugins: [
       'inline-dotenv',
       ['root-import', { rootPathSuffix: './src', rootPathPrefix: '~/' }],
+      'react-native-reanimated/plugin',
     ],
   };
 };

@@ -1,3 +1,4 @@
+import { AnimatePresence, MotiView } from 'moti';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
@@ -17,7 +18,16 @@ export function CartIcon({ color }: CartIconProps) {
   return (
     <View>
       <CartSvg fill={color} />
-      {showDot && <View style={styles.dot} />}
+      <AnimatePresence>
+        {showDot && (
+          <MotiView
+            from={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            style={styles.dot}
+          />
+        )}
+      </AnimatePresence>
     </View>
   );
 }

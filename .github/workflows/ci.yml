@@ -20,17 +20,15 @@ jobs:
         with:
           eas-version: latest
           expo-version: latest
-          packager: npm
+          packager: yarn
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: yarn
 
       - name: 🔓 Create env file
         run: |
           touch .env
-          echo GITHUB_OAUTH_CLIENT_ID=${{ secrets.GH_OAUTH_CLIENT_ID }} >> .env
-          echo GITHUB_OAUTH_CLIENT_SECRET=${{ secrets.GH_OAUTH_CLIENT_SECRET }} >> .env
           echo API_URL=${{ secrets.PROD_API_URL }} >> .env
 
       - name: 🚀 Publish app
